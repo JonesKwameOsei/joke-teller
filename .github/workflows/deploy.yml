@@ -21,13 +21,10 @@ jobs:
       
       - name: Create config file
         run: |
-          touch config.js
-          echo "module.exports = { voiceRssApiKey: '${{ secrets.VITE_VOICERSS_API_KEY }}' }" > config.js
+          echo "const config = { voiceRssApiKey: '${{ secrets.VOICERSS_API_KEY }}' };" > config.js
       
       - name: Build
         run: npm run build
-        env:
-          VITE_VOICERSS_API_KEY: ${{ secrets.VITE_VOICERSS_API_KEY }}
       
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
