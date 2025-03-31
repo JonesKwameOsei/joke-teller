@@ -9,18 +9,25 @@ function toggleButton() {
   : (btn.disabled = true);
 }
 
-  // Passing Joke to VoiceRSS API
-  function tellMe(joke) {
-    VoiceRSS.speech({
-			key: import.meta.env.VITE_VOICERSS_API_KEY, 
-			src: `${joke}`,
-			hl: 'en-us',
-			v: 'Linda',
-			r: 0,
-			c: 'mp3',
-			f: '44khz_16bit_stereo',
-			ssml: false,
-		});
+// Passing Joke to VoiceRSS API
+function tellMe(joke) {
+  const apiKey =
+		import.meta.env.VITE_VOICERSS_API_KEY || 'YOUR_FALLBACK_API_KEY';
+	if (!apiKey) {
+		console.error('API key is missing!');
+		return;
+	}
+
+  VoiceRSS.speech({
+		key: apiKey,
+		src: `${joke}`,
+		hl: 'en-us',
+		v: 'Linda',
+		r: 0,
+		c: 'mp3',
+		f: '44khz_16bit_stereo',
+		ssml: false,
+	});
 }
 
 // Get jokes from Joke API
