@@ -11,8 +11,7 @@ function toggleButton() {
 
 // Passing Joke to VoiceRSS API
 function tellMe(joke) {
-  const apiKey =
-		import.meta.env.VITE_VOICERSS_API_KEY || 'e1be9d4041fb4ffc9c0436da3b447c58';
+  const apiKey = import.meta.env.VITE_VOICERSS_API_KEY || 'e1be9d4041fb4ffc9c0436da3b447c58';
 	if (!apiKey) {
 		console.error('API key is missing!');
 		return;
