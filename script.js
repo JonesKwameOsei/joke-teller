@@ -9,24 +9,18 @@ function toggleButton() {
   : (btn.disabled = true);
 }
 
-// Passing Joke to VoiceRSS API
-function tellMe(joke) {
-  const apiKey = import.meta.env.VITE_VOICERSS_API_KEY || 'e1be9d4041fb4ffc9c0436da3b447c58';
-	if (!apiKey) {
-		console.error('API key is missing!');
-		return;
-	}
-
-  VoiceRSS.speech({
-		key: apiKey,
-		src: `${joke}`,
-		hl: 'en-us',
-		v: 'Linda',
-		r: 0,
-		c: 'mp3',
-		f: '44khz_16bit_stereo',
-		ssml: false,
-	});
+  // Passing Joke to VoiceRSS API
+  function tellMe(joke) {
+    VoiceRSS.speech({
+			key: config.voiceRssApiKey, 
+			src: `${joke}`,
+			hl: 'en-us',
+			v: 'Linda',
+			r: 0,
+			c: 'mp3',
+			f: '44khz_16bit_stereo',
+			ssml: false,
+		});
 }
 
 // Get jokes from Joke API
